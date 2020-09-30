@@ -1,0 +1,49 @@
+<style type="text/css">
+	.card {
+		max-width: 700px;
+		color: #000;
+	}
+	.card p{
+		color: #000;
+	}
+
+	.card:hover p{
+		color: #fff;
+	}
+	.card:hover{
+		color: #fff;
+		background-color: #202020;
+	}
+
+	.card-body {
+		padding: 20px;
+	}
+</style>
+{% if blog_post %}
+<div class="row no-gutters border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative card">
+	<div class="col p-4 d-flex flex-column position-static">
+		<strong class="d-inline-block mb-2 text-primary">{{blog_post.title}}</strong>
+		<hr>
+		<div class="mb-1 text-muted">Updated on {{blog_post.date_updated}} by {{blog_post.author}}</div>
+		<hr>
+		<p class="card-text mb-auto">{{blog_post.body|safe|truncatechars:180}}</p>
+		<a href="{% url 'detail' post.slug %}" class="stretched-link"></a>
+	</div>
+	<div class="col-auto d-none d-lg-block">
+		<img class="bd-placeholder-img" width="200" height="250" src="{{blog_post.image.url}}">
+	</div>
+</div>
+{% else %}
+
+<div class="container">
+	<div class="row">
+		<div class="card m-auto">
+			<div class="card-body mt-2 mb-2">
+				<h2 class="card-title">No results</h2>
+				<p class="card-text">There were no results matching the search: "{{query}}"</p>
+			</div>
+		</div>
+	</div>
+</div>
+
+{% endif %}

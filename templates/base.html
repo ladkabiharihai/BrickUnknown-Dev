@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+  <title>{% block title %}
+    {% endblock title %}</title>
+
+<style>
+
+.btn-secondary {
+    color: #fff;
+    background-color: #000!important;
+    border-color: crimson!important;
+}
+
+#cart-total{
+	display: block;
+	text-align: center;
+	color:#fff;
+	background-color: red;
+	width: 20px;
+	height: 25px;
+	border-radius: 50%;
+	font-size: 14px;
+}
+#cart-tota{
+	display: block;
+	text-align: center;
+	color:#fff;
+	background-color: red;
+	width: 20px;
+	height: 25px;
+	border-radius: 50%;
+	font-size: 14px;
+}
+#cart-icon{
+	width:70px;
+	display: inline-block;
+	margin-left: 15px;
+}
+
+
+</style>
+
+
+{% load static %}
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+  <link rel="stylesheet" type="text/css" href={% static '/css/styles.css' %}>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
+    crossorigin="anonymous" />
+
+</head>
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg static-top shadow-lg">
+    <a class="navbar-brand ml-4" href="{% url 'home' %}">
+      <img src={% static '/images/BU.jpg' %} alt="BrickUnknown" >
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+      aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarResponsive">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="{% url 'home' %}">HOME<span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href={% url 'course_list' %}>LEARNING</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{% url 'hireus' %}">HIREuS</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="{% url 'blog' %}">BLOG</a>
+        </li>
+        <li class="nav-item">
+          {% if request.user.is_authenticated %}
+            <a class="nav-link" href="{% url 'project' %}">PROJECTS</a>
+          {% else %}
+            <a class="nav-link" href={% url 'login' %}>PROJECTS</a>
+          {% endif %} 
+        </li>
+        <li class="nav-item">
+          {% if request.user.is_authenticated %}
+          {% if request.user.image %}
+          <div class="dropdown pl-5">
+            <button class="btn dropdown-toggle py-2" type="button" id="dropdownMenuButton"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img class="pp-icon" src={{request.user.image.url}} alt="">
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <a class="m-auto bg-light dropdown-item" href="{% url 'logout' %}">logout</a>
+              <a class='m-auto bg-light dropdown-item' href="{% url 'account' %}">Account</a>
+            </div>
+          </div>
+          {% else %}
+          <div class="dropdown pl-5">
+            <button class="btn dropdown-toggle py-2" type="button" id="dropdownMenuButton"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <img class="pp-icon" src={% static 'images/avatar.png' %} alt="">
+            </button>
+            <div class="dropdown-menu " aria-labelledby="dropdownMenuButton ">
+              <a class="m-auto  dropdown-item"  href="{% url 'logout' %}">logout</a>
+              <a class='m-auto  dropdown-item' href="{% url 'account' %}">Account</a>
+            </div>
+          </div>
+          {% endif %}
+          {% else %}
+          <div class="dropdown pl-5 mt-2">
+            <button class="btn btn-secondary  py-2" type="button" >
+              <a class="noud" href="{% url 'login' %}">login</a>
+            </button>             
+            </div>
+          {% endif %}
+        </li>
+      </ul>
+	    </div>
+    </div>
+</nav>
+
+
+
+
+
+
+
+{% if messages %}
+{% for message in messages %}
+<div class="alert alert-{{ message.tags }} alert-dismissible fade show my-0 " role="alert">
+  {{ message }}
+  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+  </button>
+</div>
+{% endfor %}
+{% endif %}
+
+<!--############################################################################################-->
+
+<body>
+
+  <style type="text/css">
+    .grasp{
+      min-height: 100vh;
+      height: 100%;
+      background-color:	#202020;
+    }
+  </style>
+
+
+  <div class=" icons">
+    <a href="https://www.instagram.com/brickunknown/" class="insta">instagram<i class="fa fa-instagram" aria-hidden="true"></i></a>
+    <a href="" class="youtube">youtube<i class="fa fa-youtube" aria-hidden="true"></i></a>
+    <a href="" class="facebook" >Facebook<i class="fa fa-facebook" aria-hidden="true"></i></a>
+    <a href="" class="github">github<i class="fa fa-github" aria-hidden="true"></i></a>
+  </div>
+
+
+  <div class="grasp">
+    {% block content %}
+
+
+
+
+
+
+
+    {% endblock content %}
+  </div>
+</body>
+
+<!--#####################################################################################-->
+
+<footer class="footersection" id="footerdiv">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-6 col-12 footer-div text-center">
+        <div>
+          <h3>AboutUs</h3>
+          <p>discription</p>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-6 col-12 footer-div text-center text-center">
+        <div>
+          <h3>Navigation links</h3>
+          <li><a href="{% url 'home' %}">Home</a></li>
+          <li><a href="#">Learning</a></li>
+          <li><a href="#">HireUs</a></li>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-12 col-12 footer-div text-center">
+        <div>
+          <h3 class="news-l m-y-2">NEWSLETTER</h3>
+          <p class="news-le">about newsletter</p>
+          <div class="container newsletter-main">
+            <div class="row">
+              <div class="col-lg-12 col-12">
+                <div class="input-group mb-3">
+                  <input type="text" class="form-control news-input" placeholder="Your Email">
+                  <div class=" input-group-append">
+                    <a href="#"><span class="input-group-text">SUBSCRIBE</span></a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mt-5 text-center">
+      <p>Copyright &copy; 2020 All rights reserved</p>
+    </div>
+
+    <div class="scrollTop float-right">
+      <i class="fa fa-arrow-up" onclick="topFunction()" id="mybtn"></i>
+    </div>
+
+  </div>
+</footer>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"
+  integrity="sha512-CEiA+78TpP9KAIPzqBvxUv8hy41jyI3f2uHi7DGp/Y/Ka973qgSdybNegWFciqh6GrN2UePx2KkflnQUbUhNIA=="
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Counter-Up/1.0.0/jquery.counterup.min.js"
+  integrity="sha512-d8F1J2kyiRowBB/8/pAWsqUl0wSEOkG5KATkVV4slfblq9VRQ6MyDZVxWl2tWd+mPhuCbpTB4M7uU/x9FlgQ9Q=="
+  crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+
+
+{% block js %}
+
+{% endblock js %}
+
+
+<script>
+  $('.count').counterUp({
+    delay: 10,
+    time: 2000
+  })
+
+
+  //Get the button:
+  mybutton = document.getElementById("myBtn");
+
+  // When the user scrolls down 20px from the top of the document, show the button
+  window.onscroll = function () { scrollFunction() };
+
+  function scrollFunction() {
+    if (document.body.scrollTop > 50 || document.documentElement.scrollTop > 50) {
+      mybutton.style.display = "block";
+    } else {
+      mybutton.style.display = "none";
+    }
+  }
+
+  // When the user clicks on the button, scroll to the top of the document
+  function topFunction() {
+    document.body.scrollTop = 0; // For Safari
+    document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+  }
+
+</script>
+
+</body>
+
+</html>

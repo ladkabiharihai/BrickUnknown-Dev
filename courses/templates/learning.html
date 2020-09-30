@@ -1,0 +1,42 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>{% block title %}BrickUnknown Learning{% endblock %}</title>
+    
+    <link href="{% static "css/learning.css" %}" rel="stylesheet">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+        integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw=="
+        crossorigin="anonymous" />
+</head>
+
+<body>
+    <div id="header"> 
+        <a href={% url 'home' %} class="logo">Brick<span style="color:gold; font-weight:bold;">||</span>Unknown</a>
+        <ul class="menu"> 
+        {% if request.user.is_authenticated %} 
+        
+        <li><a href="{% url "logout" %}">Sign out</a></li>
+            {% else %}
+             <li><a href="{% url "login" %}">Sign in</a></li> 
+             {% endif %} </ul>
+    </div>
+        {% block content %} 
+        {% endblock %} 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script> 
+    
+    <script>    
+        $(document).ready(function () { 
+            {% block domready %} 
+            {% endblock %} 
+            });  
+    </script>
+</body>
+
+</html>

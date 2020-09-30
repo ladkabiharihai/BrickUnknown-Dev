@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<style>
+.sg{
+    margin-top: 300px!important;
+}
+</style>
+
+<div class="container">
+    <div class="d-flex flex-column" >
+        <h1 class="m-auto sg">Must Authenticate to view this Page</h1>
+        <h1 class="m-auto"> 
+            <a href="{% url 'register' %}">Register</a> or
+            <a href="{% url 'login' %}">Login</a>
+        </h1>
+    </div>
+</div>
+
+
+{% endblock content %}

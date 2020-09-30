@@ -1,0 +1,104 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+
+
+<style type="text/css">
+	.create-form {
+		width: 100%;
+		max-width: 100%;
+		padding: 15px;
+		margin: auto;
+	}
+
+	.submit-button {
+		max-width: 200px;
+	}
+</style>
+
+<header class="section-header">
+    <h3 class="text-center pt-3 " style="color:white;">PROJECTS</h3>
+    <h6 style="text-align:center; color:white;">Contribute to Open Source Projects<span>
+                create your own destiny!</span></h6>
+    <div class="projd text-center mb-2 pt-3">
+    	<h4 style="color:yellow;">Step Closer to Your Success</h4>
+    </div>
+</header>
+
+
+<div class="container">
+	<div class="row">
+		<div class="col-lg-10 offset-lg-1">
+			<form class="create-form" method="post" enctype="multipart/form-data">{% csrf_token %}
+
+				<!-- title -->
+				<div class="form-group">
+					<label for="id_title" style="color:white;">Project Name</label>
+					<input class="form-control" type="text" name="ProjectName" id="id_title" placeholder="Project Name"
+						required autofocus>
+				</div>
+				<label for="inputCity" style="color:white;">Categories</label>
+				<div class="form-row">
+					<div class="form-group col-md-4">
+						<input type="text" class="form-control" id="inputCity" name="category1" placeholder="category 1">
+					</div>
+					<div class="form-group col-md-4">
+						<input type="text" class="form-control" id="inputCity" name="category2" placeholder="category 2">
+					</div>
+					<div class="form-group col-md-4">
+						<input type="text" class="form-control" id="inputCity" name="category3" placeholder="category 3">
+					</div>
+					<div class="form-group col-md-4">
+						<input type="text" class="form-control" id="inputCity" name="category4" placeholder="category 4">
+					</div>
+					<div class="form-group col-md-4">
+						<input type="text" class="form-control" id="inputCity" name="category5" placeholder="category 5">
+					</div>
+					
+				</div>
+				
+
+				<!--links-->
+				<div class="form-row">
+					<div class="form-group col-md-4">
+						<label for="inputCity" style="color:white;">Project Link</label>
+						<input type="url" class="form-control" id="inputCity" name="link" placeholder="Project Link">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="inputCity" style="color:white;">Your Github</label>
+						<input type="url" class="form-control" id="inputCity" name="github" placeholder="Your Github">
+					</div>
+					<div class="form-group col-md-4">
+						<label for="inputCity" style="color:white;">Your LinkedIN</label>
+						<input type="url" class="form-control" id="inputCity" name="linedin" placeholder="Your LinkedIN">
+					</div>
+
+				</div>
+				<!-- Body -->
+				<div class="form-row">
+				<div class="form-group col-md-10">
+					<label for="id_desc" style="color:white;">Description</label>
+					<textarea class="form-control" rows="10" type="text" name="desc" id="id_desc"
+						placeholder="Project Description...." required></textarea>
+				</div>
+				</div>
+
+				<!-- Image -->
+				<div class="form-group">
+					<label for="id_image" style="color:white;">Image</label>
+					<input type="file" name="image" id="id_image" accept="image/*" required>
+				</div>
+
+				<!-- Submit btn -->
+				<button class="submit-button btn btn-lg btn-primary btn-block" type="submit">Create ProJect</button>
+			</form>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+{% endblock content %}

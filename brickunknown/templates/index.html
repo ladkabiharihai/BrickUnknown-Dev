@@ -1,0 +1,415 @@
+{% extends 'base.html' %}
+
+{% block title %}BRICKUNKNOWN
+{% endblock title %}
+
+{% block content %}
+{% load static %}
+
+
+  
+        
+<div>
+<section class="header-section">
+  <div class="center-div">
+    <h1 class="font-weight-bold">Hub Of Free <br> Untampered Information and Knowledge</h1>
+    <br>
+    {% if request.user.is_authenticated %}
+      <h2>Hello, {{request.user.full_name}} <h2>
+    {% else %}
+    <div class="header-buttons">
+      <a href={% url 'register' %}>APPLY</a>
+      <a href={% url 'login' %}>LOGIN</a>
+    {% endif %}
+    </div>
+  </div>
+</section>
+</div>
+
+
+<br>
+
+<!-- #################end header############### -->
+
+<section class="header-extradiv">
+  <div class="container">
+    <div class="row">
+      <div class="extra-div col-lg-4 col-md-4 col-12">
+        <a href="#"><i class="fa-3x fa fa-star-o" aria-hidden="true"></i></a>
+        <h2>Text</h2>
+        <p>An executive guide to artificial intelligence, from machine learning and general AI to neural networks.</p>
+      </div>
+      <div class="extra-div col-lg-4 col-md-4 col-12">
+        <a href="#"><i class="fa-3x fa fa-trophy" aria-hidden="true"></i></a>
+        <h2>Text2</h2>
+        <p>discription2</p>
+      </div>
+      <div class="extra-div col-lg-4 col-md-4 col-12">
+        <a href="#"><i class="fa-3x fa fa-magic" aria-hidden="true"></i></a>
+        <h2>Text3</h2>
+        <p>discription3</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--###########################################################################-->
+
+<section class="learning" id="learndiv">
+  <div class="container headings text-center">
+    <h2 class="text-center font-weight-bold text-white ">Learning</h2>
+  </div>
+  <br>
+  <div class="container">
+    <div class="row ">
+      <div class="col-lg-4 col-md-4 col-12">
+        <div class="box1">
+          <div class="box-header">Web Devlopment</div>
+          <div class="box-body">
+            <img src={% static '/images/course/webdev.jpg' %} alt="">
+          </div>
+          <div class="box-footer">
+            <a href="#">learn</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-12">
+        <div class="box1">
+          <div class="box-header">Artificail Inteligence</div>
+          <div class="box-body">
+            <img src={% static '/images/course/ai.png' %} alt="">
+          </div>
+          <div class="box-footer">
+            <a href="#">learn</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-12">
+        <div class="box1">
+          <div class="box-header">Blockchain</div>
+          <div class="box-body">
+            <img src={% static '/images/course/blockchain.png' %} alt="">
+          </div>
+          <div class="box-footer">
+            <a href="#">learn</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row nd">
+      <div class="col-lg-4 col-md-4 col-12">
+        <div class="box1">
+          <div class="box-header">Computer Languages</div>
+          <div class="box-body">
+            <img src={% static '/images/course/languages.jpg' %} alt="">
+          </div>
+          <div class="box-footer">
+            <a href="#">learn</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-12">
+        <div class="box1">
+          <div class="box-header">Cloud</div>
+          <div class="box-body">
+            <img src={% static '/images/course/cloud.png' %} alt="">
+          </div>
+          <div class="box-footer">
+            <a href="#">learn</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-12">
+        <div class="box1">
+          <div class="box-header">Hacking</div>
+          <div class="box-body">
+            <img src={% static '/images/course/hacking.jpg' %} alt="">
+          </div>
+          <div class="box-footer">
+            <a href="#">learn</a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  </div>
+</section>
+<!--###########################################################################-->
+
+
+<section class="project-work">
+  <div class="container headings text-center">
+    <p class="text-center font-weight-bold">Web Devlopment</p>
+  </div>
+  <div class="container d-flex justify-content-around align-items-center text-center">
+    <div>
+      <h1 class="count">100</h1>
+      <p>text</p>
+    </div>
+    <div>
+      <h1 class="count">100</h1>
+      <p>text</p>
+    </div>
+    <div>
+      <h1 class="count">100</h1>
+      <p>text</p>
+    </div>
+    <div>
+      <h1 class="count">100</h1>
+      <p>text</p>
+    </div>
+    <div>
+      <h1 class="count">100</h1>
+      <p>text</p>
+    </div>
+
+  </div>
+</section>
+
+<!--##################################################################################-->
+
+<section class="pricing" id="pricediv">
+  <div class="container headings text-center">
+    <h2 class="text-center font-weight-bold text-white">HireUs</h2>
+  </div>
+  <br>
+  <div class="container">
+    <div class="row">
+      <div  class="col-lg-12 col-12">
+        <div class="card sz text-center">
+          
+          <div class="card-body">
+            <img src={% static '/images/course/hacking.jpg' %} alt="">
+          </div>
+          <div class="card-footer">
+            <a href="#">Explore</a>
+          </div>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>
+<!--###################################################################################-->
+
+
+<section class="gems">
+  <div class="container headingsg text-center">
+    <h1 class="text-center font-weight-bold">OUR TEAM</h1>
+    <p class="text-capitalize pt-1">Gems I found in Stones</p>
+  </div>
+  <br><br>
+  <div id="demo" class="carousel slide" data-ride="carousel">
+
+    <!-- Indicators -->
+    <ul class="carousel-indicators">
+      <li data-target="#demo" data-slide-to="0" class="active"></li>
+      <li data-target="#demo" data-slide-to="1"></li>
+      <li data-target="#demo" data-slide-to="2"></li>
+    </ul>
+
+    <!-- The slideshow -->
+    <div class="carousel-inner container ">
+      <div class="carousel-item active">
+
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-12">
+            <div class="box">
+              <a href="#"> <img src={% static '/images/gems/tushar.png' %} class="
+                img-fluidi img-thumbnail" alt=""> </a>
+              <p class="m-2">He is doing Bachelors in technology
+              in computer science. He is proficient in C and C++.
+              He has knowledge of many languages and is highly skilled in
+              programming.
+              </p>
+              <h1>Tushar Kottak</h1>
+              <h2>
+              specialized in:<br>
+              C/C++  
+              </h2>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-12">
+            <div class="box">
+              <a href="#"> <img src={% static '/images/gems/mahipal.png' %} class="
+                img-fluidi img-thumbnail" alt=""> </a>
+              <p class="m-2">He is doing Bachelors in technology
+              in computer science. He is one in best of us, he is really good
+              at building applications and coming up with new ideas</p>
+              <h1>Mahipal Pareek</h1>
+              <h2>specialized in:<br>
+              C/C++, python,
+              Machine learning , <br>Deep learning and AI
+              </h2>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-12">
+            <div class="box">
+              <a href="#"> <img src={% static '/images/learning.jpg' %} class="
+                img-fluidi img-thumbnail" alt=""> </a>
+              <p class="m-2">
+              She is doing Bachelors in technology
+              in computer science.
+              She is perfectionist of our group 
+              she use to keep things as simple as possible.
+              She has the qualities of a great programmer</p>
+              <h1>M</h1>
+              <h2>specialized in:<br>
+              C#, python, visual effects,<br>
+              Game Development, Graphics
+              </h2>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+
+
+      <div class="carousel-item">
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-12">
+            <div class="box">
+              <a href="#"> <img src={% static '/images/learning.jpg' %} class="
+                img-fluidi img-thumbnail" alt=""> </a>
+              <p class="m-4">text</p>
+              <h1>name</h1>
+              <h2>specialized in:<br></h2>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-12">
+            <div class="box">
+              <a href="#"> <img src={% static '/images/learning.jpg' %} class="
+                img-fluidi img-thumbnail" alt=""> </a>
+              <p class="m-4">text</p>
+              <h1>name</h1>
+              <h2>specialized in:<br></h2>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-12">
+            <div class="box">
+              <a href="#"> <img src={% static '/images/learning.jpg' %} class="
+                img-fluidi img-thumbnail" alt=""> </a>
+              <p class="m-4">text</p>
+              <h1>name</h1>
+              <h2>specialized in:<br></h2>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="row">
+          <div class="col-lg-4 col-md-4 col-12">
+            <div class="box">
+              <a href="#"> <img src={% static '/images/learning.jpg' %} class="
+                img-fluidi img-thumbnail" alt=""> </a>
+              <p class="m-4">text</p>
+              <h1>name</h1>
+              <h2>specialized in:<br></h2>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-12">
+            <div class="box">
+              <a href="#"> <img src={% static '/images/learning.jpg' %} class="
+                img-fluidi img-thumbnail" alt=""> </a>
+              <p class="m-4">text</p>
+              <h1>name</h1>
+              <h2>specialization</h2>
+            </div>
+          </div>
+          <div class="col-lg-4 col-md-4 col-12">
+            <div class="box">
+              <a href="#"> <img src={% static '/images/learning.jpg' %} class="
+                img-fluidi img-thumbnail" alt=""> </a>
+              <p class="m-4">text</p>
+              <h1>name</h1>
+              <h2>specialization</h2>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="carousel-control-prev" href="#demo" data-slide="prev">
+      <span class="carousel-control-prev-icon"></span>
+    </a>
+    <a class="carousel-control-next" href="#demo" data-slide="next">
+      <span class="carousel-control-next-icon"></span>
+    </a>
+
+  </div>
+
+
+</section>
+
+<!--##############################################################################-->
+
+<section class="contactus" id="contactid">
+  <div class="container headings text-center">
+    <h1 class="text-center font-weight-bold cu">CONTACT US</h1>
+    <p class="text-capitalize pt-1">always happy to help</p>
+  </div>
+  <br><br><br>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-10 offset-lg-2 offset-md-2 offset-1">
+
+        <form method="post" action="contact">
+          {% csrf_token %}
+          <div class="form-group">
+            <input type="text" class="form-control" id="username" name="name" required autocomplete="off"
+              placeholder="Enter your Name">
+          </div>
+
+          <div class="form-group">
+            <input type="email" class="form-control" id="email" name="email" required autocomplete="off"
+              placeholder="Email Address">
+          </div>
+
+          <div class="form-group">
+            <input type="tel" class="form-control" id="mob" name="mob" required autocomplete="off"
+              placeholder="Mobile No.">
+          </div>
+
+          <div class="form-group">
+            <label for="comment">Comment:</label>
+            <textarea class="form-control" rows="3" id="comment" name="comment" required autocomplete="off"
+              placeholder="Enter your Message"></textarea>
+          </div>
+
+          <div class="d-flex justify-content-center form-button">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--###############################################################################-->
+
+<section class="newsletter" id="newsletterid">
+  <div class="container headings text-center">
+    <h1 class="text-center font-weight-bold">SUBSCRIBE TO OUR NEWSLETTER</h1>
+  </div>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2 col-12">
+        <div class="input-group mb-3">
+          <input type="text" class="form-control news-input" placeholder="Your Email">
+          <div class="input-group-append">
+            <a href=""><span class="input-group-text">SUBSCRIBE</span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+{% endblock content %}

@@ -1,0 +1,46 @@
+{% extends "learning.html" %}
+
+{% block title %}
+    {% if object %} Edit course "{{ object.title }}" 
+    {% else %} Create a new course {% endif %}
+{% endblock %}
+
+{% block content %} 
+
+<style>
+.create-form {
+	    width: 100%;
+	    max-width: 100%;
+	    padding: 15px;
+	    margin: auto;
+  	}
+</style>
+{% if request.user.is_mentor %}
+    <h1 class="text-center"> {% if object %} 
+            Edit course "{{ object.title }}" 
+        {% else %}
+         Create a new course 
+        {% endif %} 
+    </h1>
+
+    
+<div class="container module-edit">
+	<div class="row">
+		<div class="text-center col-lg-6 offset-lg-3">
+    <h2>Course info</h2>
+    
+    <form class="create-form" method="post">
+        {{ form.as_p }} {% csrf_token %}
+         <p><input type="submit" value="Save course"></p>
+    </form>
+    </div>
+    {% else %}
+
+    <div>
+        <h1>you are not admin of the website</h1>
+    </div>
+
+    {% endif %}
+    </div>
+</div>
+{% endblock %}

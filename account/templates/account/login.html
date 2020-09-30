@@ -1,0 +1,74 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+      <link rel="stylesheet" href={% static 'css/registration.css' %}>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha512-SfTiTlX6kk+qitfevl/7LibUOeJWlt9rbyDn92a1DqWOw9vWG2MFoays0sgObmWazO5BQPiFucnnEAjpAB+/Sw==" crossorigin="anonymous" />
+    <link href="https://fonts.googleapis.com/css2?family=Mulish&display=swap" rel="stylesheet"> 
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+
+
+    <div class=" bg-dark" style="height: 100vh;">
+        <article class="card-body mx-auto" style="max-width: 400px;">
+	   <h4 class="card-title mt-3 text-center" style="color: white">Login</h4>
+	   <p class="text-center" style="color: white">Explore Your Edges</p>
+	   <p>
+           <a href="" class="btn btn-block btn-gmail"> <i class="fa fa-google"></i>   Login via Gmail</a>
+		  <a href="" class="btn btn-block btn-github"> <i class="fa fa-github"></i>   Login via Github</a>
+	   </p>
+	   <p class="divider-text">
+            <span class="bg-light">OR</span>
+        </p>
+	<form action="" method="POST">{% csrf_token %}
+	
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+		 </div>
+        <input  class="form-control" name="email" placeholder="Email address" type="email" required>
+    </div> <!-- form-group// -->
+    
+    <div class="form-group input-group">
+    	<div class="input-group-prepend">
+		    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+		</div>
+        <input class="form-control" name="password" placeholder="password" type="password" required>
+    </div> <!-- form-group// -->
+     {% for field in registration_form %}
+      <p>
+        {% for error in field.errors %}
+          <p style="color: red">{{ error }}</p>
+        {% endfor %}
+      </p>
+  {% endfor %}
+  {% if registration_form.non_field_errors %}
+    <div style="color: red">
+      <p>{{registration_form.non_field_errors}}</p>
+    </div>
+      
+  {% endif %}
+    <div class="form-group">
+        <button type="submit" name="Submit" class="btn btn-primary btn-block"> sign in  </button>
+    </div> <!-- form-group// -->
+    <p class="text-center" style="color: white">Dont, Have an account? <a href={% url 'register' %} <b> Register</b></a> </p>
+</form>
+
+<div class="d-flex flex-column">
+   <a class='m-auto' href="{% url 'password_reset' %}">Forgot password</a>
+</div>
+
+</article>
+</div> <!-- card.// -->
+
+  </body>
+</html>
+

@@ -1,0 +1,36 @@
+{% extends "learning.html" %}
+
+{% block title %}Delete course{% endblock %}
+
+{% block content %}
+
+<style>
+input[type="submit"], a.button {
+    border-radius: 5px;
+    background: #000;
+    color: crimson;
+    font-size: 16px;
+    text-transform: uppercase;
+    border: none;
+    padding: 10px 20px;
+    margin: 20px 0;
+    width: 300px;
+}
+</style>
+{% if request.user.is_mentor %}
+  <h1>Delete course "{{ object.title }}"</h1>
+
+  <div class="module-edit">
+    <form method="post">
+      {% csrf_token %}
+      <p>Are you sure you want to delete "{{ object.title }}"?</p>
+      <input type="submit" value="Confirm">
+    </form>
+  </div>
+  {% else %}
+
+    <div>
+        <h1>you are not admin of the website</h1>
+    </div>
+  {% endif %}
+{% endblock %}

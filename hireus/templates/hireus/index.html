@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+
+  .box-header img {
+    width: 338px !important;
+    height: 250px;
+  }
+
+  .hireussec{
+    background-image: url('../static/images/mustauthn.jpg');
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    background-attachment: fixed;
+  }
+
+  .product {
+    border-radius: 0 0 4px 4px;
+  }
+
+   .product h6{
+    text-align: left;
+    margin-left: 10px;
+    margin-top: -20px;
+  }
+  .box1{
+  height: 500px;
+  text-align: center;
+  border: 1px solid rgba(0,0,0,0.2);
+  box-shadow: 0 5px 10px 0 rgba(0,0,0,0.3);
+  transition: 0.3s ease;
+  background: #fff;
+  box-shadow: 0 0 20px 0 rgba(0,0,0,0.3);
+  
+} 
+
+.box-footer button{
+  border: 1px solid #50d1c0;
+  border-radius: 50px;
+  margin: 0 5px;
+  padding: 12px 35px;
+  outline: none;
+  color: #50d1c0!important;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.4;
+  text-align: center;
+  background: #50d1c0;
+}
+.box-footer a{
+  border: 1px solid #50d1c0;
+  border-radius: 50px;
+  margin: 0 10px;
+  padding: 12px 35px;
+  outline: none;
+  color: #fff!important;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.4;
+  text-align: center;
+  background: #50d1c0;
+}
+
+.box-footer a:hover{
+  color: #fff!important;
+  background: #202020!important;
+  text-decoration: none;
+  box-shadow: 0 0 20px 0 rgba(0,0,0,0.3);
+}
+
+.box1:hover{
+  transform: translateY(-20px);
+  box-shadow: 0 0 20px 0 #fff;
+}
+  
+}
+
+.box-footer button:hover .box1:hover{
+  color: #fff!important;
+  background: #50d1c0!important;
+  text-decoration: none;
+  box-shadow: 0 0 20px 0 rgba(0,0,0,0.3);
+
+}
+
+
+</style>
+
+
+<section class="hireussec">
+<div class="container">
+  <div class="row">
+    {% for product in products %}
+    <div class="col-lg-4 col-md-4 col-12 my-5 pt-5">
+      <div class="box1">
+        <div  class="box-header"> <img src="{{product.image.url}}" alt=""></div>
+        <div class="box-body1"><h5 style="color:#DC143C;"><strong>
+          {{product.Product_name}}</strong></h5>
+        </div>
+        <div class="box-footer product">
+          <h6 class='mar'><strong>description:</strong>    {{product.desc|truncatechars:50}}</h6><br>
+          <h6 class='mar'><strong>Category:</strong>   {{product.category}}</h6><br>
+          <h6 class='mar'><strong>price: </strong>   ${{product.price|floatformat:2}} </h6>
+          <hr>
+          <span class="divpr">
+            <a href="products/{{product.Product_id}}"  class="btn btn-light  cart">View</a>
+          </span>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+</section>
+
+
+
+
+
+{% endblock content %}
+

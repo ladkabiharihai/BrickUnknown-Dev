@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+
+{% block content %}
+
+<section class="bookorder">
+  <div class="container headings text-center">
+    <h1 class="text-center font-weight-bold">Book your Order</h1>
+    <p class="text-capitalize ">Glad you Choosed Us</p>
+  </div>
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-8 col-md-8 col-10 offset-lg-2 offset-md-2 offset-1">
+
+        <form method="post" action={% url 'booked' %}>
+          {% csrf_token %}
+          <div class="form-group">
+            <input type="text" class="form-control" id="name" name="name" required autocomplete="off"
+              placeholder="Enter your Name">
+          </div>
+
+          <div class="form-group">
+            <input type="email" class="form-control" id="email" name="email" required autocomplete="off"
+              placeholder="Email Address">
+          </div>
+
+          <div class="form-group">
+            <input type="text" class="form-control" id="category" name="category" required autocomplete="off"
+              placeholder="category..">
+          </div>
+
+          <div class="form-group">
+            <input type="text" class="form-control" id="Product_name" name="Product_name" required autocomplete="off"
+              placeholder="Name of Product">
+          </div>
+
+          <div class="form-group">
+            <input type="tel" class="form-control" id="mob" name="mob" required autocomplete="off"
+              placeholder="Mobile No.">
+          </div>
+
+          <div class="form-group">
+            <label for="details"> <strong> Details:</strong></label>
+            <textarea class="form-control" rows="3" id="details" name="details" required autocomplete="off"
+              placeholder="your prefences/ what do you wnat in this project......"></textarea>
+          </div>
+
+          <div class="d-flex justify-content-center form-button">
+            <button type="submit" class="btn btn-primary">Submit</button>
+          </div>
+        </form>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+{% endblock content %}

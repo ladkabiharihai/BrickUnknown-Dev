@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+
+.box-body1 img{
+  width: 338px!important;
+  height: 250px;
+}
+.product{
+	border-radius: 0 0 4px 4px;
+}
+</style>
+
+<div class="container">
+    <div class="row">
+      <div class="col-lg-4 col-md-4 col-12 my-5 ">
+        <div class="box1">
+        <div class="box-header">product</div>
+          <div class="box-body1">
+            <img src={% static '/images/course/webdev.jpg' %} alt="">
+          </div>
+          <div class="box-footer product">
+          <h6><strong>desc</strong></h6>
+          <hr> 
+            <a href="#">Add to Cart</a>
+            <a href="#">view</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-12 my-5">
+        <div class="box1">
+        <div class="box-header">Product</div>
+          <div class="box-body1">
+            <img src={% static '/images/course/ai.png' %} alt="">
+          </div>
+          <div class="box-footer product">
+          <h6><strong>desc</strong></h6>
+          <hr> 
+            <a href="#">Add to Cart</a>
+            <a href="#">view</a>
+          </div>
+        </div>
+      </div>
+      <div class="col-lg-4 col-md-4 col-12 my-5">
+        <div class="box1">
+        <div class="box-header">Product</div>
+          <div class="box-body1">
+            <img src={% static '/images/course/blockchain.png' %} alt="">
+          </div>
+          <div class="box-footer product">
+          <h6><strong>desc</strong></h6>
+          <hr> 
+            <a href="#">Add to Cart</a>
+            <a href="#">view</a>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>
+
+
+{% endblock content %}

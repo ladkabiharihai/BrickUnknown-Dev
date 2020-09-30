@@ -1,0 +1,83 @@
+from django.db import models
+
+# Create your models here.
+from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+
+
+class MyAccountManager(BaseUserManager):
+    def create_user(self,email,username,full_name,password=None,image=None):
+        if not email:
+            raise ValueError("You should have an email")
+        if not username:
+            raise ValueError("You should have a username")
+        if not full_name:
+            raise ValueError("You should have a Full name")
+
+        user = self.model(
+            email = self.normalize_email(email),
+            username = username,
+            full_name = full_name,
+            image = image,
+            )
+
+        user.set_password(password)
+        user.save(using=self.db)
+        return user
+
+
+    def create_superuser(self,email,username,password,full_name):
+        user = self.create_user(
+            email = self.normalize_email(email),
+            username = username,
+            password = password,
+            full_name = full_name,
+            )
+        user.is_admin = True
+        user.is_staff = True
+        user.is_superuser = True
+        user.is_mentor = True
+        user.save(using=self._db)
+        return user
+
+
+
+def upload_location(instance, filename):
+	file_path = 'account/{user_id}/{title}-{filename}'.format(
+				user_id=str(instance.username),title=str(instance.email), filename=filename)
+	return file_path
+
+
+
+class Account(AbstractBaseUser):
+    email                   = models.EmailField(verbose_name="email", max_length=100,unique=True)
+    username 				= models.CharField(max_length=30, unique=True)
+    date_joined				= models.DateTimeField(verbose_name='date joined', auto_now_add=True)
+    last_login				= models.DateTimeField(verbose_name='last login', auto_now=True)
+    is_admin				= models.BooleanField(default=False)
+    is_active				= models.BooleanField(default=True)
+    is_staff				= models.BooleanField(default=False)
+    is_superuser			= models.BooleanField(default=False)
+    is_mentor               = models.BooleanField(default=False)
+    full_name               = models.CharField(max_length=150)
+    image                   = models.ImageField(upload_to=upload_location, default="",blank=True,null=True)
+
+    USERNAME_FIELD  = "email"
+    REQUIRED_FIELDS = ['username','full_name']
+
+    objects = MyAccountManager()
+
+    def __str__(self):
+        return self.email
+
+
+    def has_perm(self,perm,obj=None):
+        return self.is_admin
+
+    def has_perms(self,perm,obj=None):
+        return self.is_admin
+
+    def has_module_perms(self, app_label):
+        return True
+    
+
+

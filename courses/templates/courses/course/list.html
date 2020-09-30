@@ -1,0 +1,104 @@
+{% extends "learning.html" %}
+
+{% block title %}
+  {% if subject %}
+    {{ subject.title }} courses
+  {% else %}
+    All courses
+  {% endif %}
+{% endblock %}
+
+{% block content %}
+
+<style>
+.module {
+    padding:10px 20px;
+    float:left;
+    width:70%;
+}
+
+img{
+  float: right;
+}
+
+.box {
+    padding: 0 10px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    margin: 0 10px 40px 10px;
+    background: #f2f2f2;
+    box-shadow: 10px 10px 29px 0 rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease-in-out;
+    text-align: justify;
+    height: 30vh;
+    width: 80%;
+}
+.sz{
+  font-size: 15px;
+}
+
+.row {
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
+    margin-right: -25px;
+    margin-left: 10px;
+}
+
+</style>
+
+  <h1>
+    {% if subject %}
+      {{ subject.title }} courses
+    {% else %}
+      All courses
+    {% endif %}
+  </h1>
+  <div class="contents">
+    <h3>Subjects</h3>
+    <ul id="modules">
+      <li {% if not subject %}class="selected"{% endif %}>
+        <a href="{% url "course_list" %}">All</a>
+      </li>
+      {% for s in subjects %}
+        <li {% if subject == s %}class="selected"{% endif %}>
+          <a href="{% url "course_list_subject" s.slug %}">
+            {{ s.title }}
+            <br><span>{{ s.total_courses }} courses</span>
+          </a>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+  <div class="module">
+   
+    {% for course in courses %}
+      {% with subject=course.subject %}
+      <div class="box"> 
+        <div class="row">
+        <div class="left-column col-lg-7 ">
+        <h3>
+          <a href="{% url "course_detail" course.slug %}">
+            {{ course.title }}
+          </a>
+        </h3>
+        <p class="sz">
+        {{course.overview|truncatechars:200}}
+        </p>
+        <p>
+          <a href="{% url "course_list_subject" subject.slug %}">{{ subject }}</a>.
+            {{ course.total_modules }} modules.
+            <span style="color: green;">Instructor: {{ course.owner.full_name }}</span>
+        </p>
+        </div>
+        <div class="right-column col-lg-5 mb-3">
+            <img src="{{course.imagecourse.url}}" alt="" height="216" width="265"> 
+        </div>
+        </div>
+      </div>
+      {% endwith %}
+    {% endfor %}
+  </div>
+{% endblock %}
